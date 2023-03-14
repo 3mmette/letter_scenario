@@ -1,8 +1,13 @@
 class Letterbox:
-    def __init__(self, house_address, letter_notification_flag=False):
-        self.house_address = house_address
+    # A list of all the letterboxes created
+    letterboxes = list()
+
+    def __init__(self, address, letter_notification_flag=False):
+        self.address = address
         self.letter_notification_flag = letter_notification_flag
         self.letters = list()
+
+        Letterbox.letterboxes.append(self)
 
     # Takes a letter and places it in the letterbox list, sets flag to True
     def letter_deposited(self, letter):
