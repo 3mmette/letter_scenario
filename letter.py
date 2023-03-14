@@ -1,16 +1,19 @@
 class Letter:
-    def __init__(self, letter_id, from_whom, to_whom, to_address, message, seal=False):
-        self.letter_id = letter_id
+    def __init__(self, from_whom, to_whom, to_address, message):
         self.from_whom = from_whom
         self.to_whom = to_whom
         self.to_address = to_address
         self.message = message
-        self.seal = seal
+        self.seal = False
+        self.seal_broken_before = False
 
-    # Changes the seal status of a letter to True
+    # Creates a seal on a letter, it can not be resealed
     def create_seal(self):
-        self.seal = True
+        if not self.seal_broken_before:
+            self.seal = True
+        else:
+            print("Seal has previously been broken. You cannot reseal the letter")
 
-    # Changes the seal status of a letter to False
     def break_seal(self):
         self.seal = False
+        self.seal_broken_before = True
